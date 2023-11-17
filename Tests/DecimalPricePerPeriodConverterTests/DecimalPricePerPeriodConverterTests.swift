@@ -7,28 +7,28 @@ final class DecimalPricePerPeriodConverterTests: XCTestCase {
     func testPricePerWeekWithNilValues() {
         let price: Decimal? = nil
         let period: Int? = nil
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period)
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period)
         XCTAssertEqual(result, "")
     }
     
     func testPricePerWeekWithNilPrice() {
         let price: Decimal? = nil
         let period: Int? = 5
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period)
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period)
         XCTAssertEqual(result, "")
     }
     
     func testPricePerWeekWithNilPeriod() {
         let price: Decimal? = 500
         let period: Int? = nil
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period)
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period)
         XCTAssertEqual(result, "")
     }
     
     func testPricePerWeekWithZeroPeriod() {
         let price: Decimal? = 500
         let period: Int? = 0
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period)
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period)
         XCTAssertEqual(result, "")
     }
     
@@ -36,7 +36,7 @@ final class DecimalPricePerPeriodConverterTests: XCTestCase {
         let price: Decimal? = 500
         let period: Int? = 5
         let locale = Locale(identifier: "en_US")
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "USD")
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "USD")
         XCTAssertEqual(result, "$100.00")
     }
     
@@ -44,7 +44,7 @@ final class DecimalPricePerPeriodConverterTests: XCTestCase {
         let price: Decimal? = 500.50
         let period: Int? = 7
         let locale = Locale(identifier: "en_US")
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "USD")
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "USD")
         XCTAssertEqual(result, "$71.50")
     }
     
@@ -52,7 +52,7 @@ final class DecimalPricePerPeriodConverterTests: XCTestCase {
         let price: Decimal? = 500.33
         let period: Int? = 7
         let locale = Locale(identifier: "en_US")
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "USD")
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "USD")
         XCTAssertEqual(result, "$71.48")
     }
     
@@ -60,7 +60,7 @@ final class DecimalPricePerPeriodConverterTests: XCTestCase {
         let price: Decimal? = 500.50
         let period: Int? = 5
         let locale = Locale(identifier: "en_US")
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "USD")
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "USD")
         XCTAssertEqual(result, "$100.10")
     }
     
@@ -68,7 +68,7 @@ final class DecimalPricePerPeriodConverterTests: XCTestCase {
         let price: Decimal? = 500.50
         let period: Int? = 5
         let locale = Locale(identifier: "de_DE")
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "EUR")
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "EUR")
         XCTAssertEqual(result, "100,10€")
     }
     
@@ -76,7 +76,7 @@ final class DecimalPricePerPeriodConverterTests: XCTestCase {
         let price: Decimal? = 2.00
         let period: Int? = 2
         let locale = Locale(identifier: "de_DE")
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "EUR")
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "EUR")
         XCTAssertEqual(result, "1,00€")
     }
     
@@ -84,7 +84,7 @@ final class DecimalPricePerPeriodConverterTests: XCTestCase {
         let price: Decimal? = 4.80
         let period: Int? = 5
         let locale = Locale(identifier: "de_DE")
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "EUR")
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "EUR")
         XCTAssertEqual(result, "0,96€")
     }
     
@@ -92,7 +92,7 @@ final class DecimalPricePerPeriodConverterTests: XCTestCase {
         let price: Decimal? = 0.02
         let period: Int? = 1
         let locale = Locale(identifier: "de_DE")
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "EUR")
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "EUR")
         XCTAssertEqual(result, "0,02€")
     }
     
@@ -100,7 +100,7 @@ final class DecimalPricePerPeriodConverterTests: XCTestCase {
         let price: Decimal? = 5.40
         let period: Int? = 5
         let locale = Locale(identifier: "de_DE")
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "EUR")
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "EUR")
         XCTAssertEqual(result, "1,08€")
     }
     
@@ -108,7 +108,7 @@ final class DecimalPricePerPeriodConverterTests: XCTestCase {
         let price: Decimal? = 0.45
         let period: Int? = 1
         let locale = Locale(identifier: "de_DE")
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "EUR")
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "EUR")
         XCTAssertEqual(result, "0,45€")
     }
     
@@ -116,7 +116,7 @@ final class DecimalPricePerPeriodConverterTests: XCTestCase {
         let price: Decimal? = 2.00
         let period: Int? = 2
         let locale = Locale(identifier: "en_US")
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "USD")
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "USD")
         XCTAssertEqual(result, "$1.00")
     }
     
@@ -124,7 +124,7 @@ final class DecimalPricePerPeriodConverterTests: XCTestCase {
         let price: Decimal? = 2.00
         let period: Int? = 2
         let locale = Locale(identifier: "ja_JP")
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "JPY")
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "JPY")
         XCTAssertEqual(result, "¥1.00") // In Japan, there is no fractional part for integer values
     }
     
@@ -132,7 +132,7 @@ final class DecimalPricePerPeriodConverterTests: XCTestCase {
         let price: Decimal? = 5.40
         let period: Int? = 5
         let locale = Locale(identifier: "ja_JP")
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "JPY")
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "JPY")
         XCTAssertEqual(result, "¥1.08")
     }
     
@@ -140,7 +140,7 @@ final class DecimalPricePerPeriodConverterTests: XCTestCase {
         let price: Decimal? = 0.45
         let period: Int? = 1
         let locale = Locale(identifier: "ja_JP")
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "JPY")
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "JPY")
         XCTAssertEqual(result, "¥0.45")
     }
     
@@ -148,7 +148,7 @@ final class DecimalPricePerPeriodConverterTests: XCTestCase {
         let price: Decimal? = 2.00
         let period: Int? = 2
         let locale = Locale(identifier: "ko_KR")
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "KRW")
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "KRW")
         XCTAssertEqual(result, "₩1.00") // In Korea, there is no fractional part for integer values
     }
     
@@ -156,7 +156,7 @@ final class DecimalPricePerPeriodConverterTests: XCTestCase {
         let price: Decimal? = 5.40
         let period: Int? = 5
         let locale = Locale(identifier: "ko_KR")
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "KRW")
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "KRW")
         XCTAssertEqual(result, "₩1.08")
     }
     
@@ -164,7 +164,7 @@ final class DecimalPricePerPeriodConverterTests: XCTestCase {
         let price: Decimal? = 0.45
         let period: Int? = 1
         let locale = Locale(identifier: "ko_KR")
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "KRW")
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "KRW")
         XCTAssertEqual(result, "₩0.45")
     }
     
@@ -172,7 +172,7 @@ final class DecimalPricePerPeriodConverterTests: XCTestCase {
         let price: Decimal? = 2.00
         let period: Int? = 2
         let locale = Locale(identifier: "en_CA")
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "CAD")
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "CAD")
         XCTAssertEqual(result, "$1.00") // In Canada, the fractional part is included even for integer values
     }
     
@@ -180,7 +180,7 @@ final class DecimalPricePerPeriodConverterTests: XCTestCase {
         let price: Decimal? = 5.40
         let period: Int? = 5
         let locale = Locale(identifier: "en_CA")
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "CAD")
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "CAD")
         XCTAssertEqual(result, "$1.08")
     }
     
@@ -188,7 +188,7 @@ final class DecimalPricePerPeriodConverterTests: XCTestCase {
         let price: Decimal? = 0.45
         let period: Int? = 1
         let locale = Locale(identifier: "en_CA")
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "CAD")
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "CAD")
         XCTAssertEqual(result, "$0.45")
     }
     
@@ -196,7 +196,7 @@ final class DecimalPricePerPeriodConverterTests: XCTestCase {
         let price: Decimal? = 2.00
         let period: Int? = 2
         let locale = Locale(identifier: "de_CH")
-        let result = DecimalPricePerPeriodConverter.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "CHF")
+        let result = DecimalPricePerPeriodConverterService.pricePerPeriod(from: price, period: period, locale: locale, currencyCode: "CHF")
         XCTAssertEqual(result, "CHF 1.00")
     }
 }
