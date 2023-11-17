@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct DecimalPricePerPeriodConverterService {
+public struct DecimalPricePerPeriodConverterService {
     // E.g. for price per week for a month -> period = 4
-    static func pricePerPeriod(from price: Decimal?, period: Int?,
-                               locale: Locale = .current,
-                               currencyCode: String? = nil) -> String {
+    public static func pricePerPeriod(from price: Decimal?, period: Int?,
+                                      locale: Locale = .current,
+                                      currencyCode: String? = nil) -> String {
         guard let price = price,
               let period = period,
               period != 0 else { return "" }
